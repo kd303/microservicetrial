@@ -1,0 +1,6 @@
+configuration:
+  projectname: configclient
+server:
+  port: 8001
+message:
+  greeting: Ra Ra Rasputin, lover of the russian queen! 
