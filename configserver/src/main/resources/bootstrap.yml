@@ -2,7 +2,7 @@ spring:
   devtools:
     livereload:
       enabled: false
-      port: 8889
+      port: 8889 ## doesnt work !
     remote:
       proxy:
         host: indpunsbd4intpxy01.ad.infosys.com
@@ -13,9 +13,11 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/rpicloud/guide-cloud-config
+          uri: https://github.com/kd303/config-repo
 server:
   port: 8888
   
+  ## last line repo does not work, as it is just a filder within a master branch
+  # once I created a new repo and put the file there it just works!
   ## https://github.com/rpicloud/guide-cloud-config
   ## https://github.com/kd303/microservicetrial/tree/master/config-repo/configclient

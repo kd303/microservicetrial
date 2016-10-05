@@ -1,7 +1,7 @@
 spring:
   devtools:
     livereload:
-      enabled: false
+      enabled: false ## to ensure that on one machine both apps can run, havent found a way run liveconnect on two different ports.
   application:
     name: configclient
   cloud:

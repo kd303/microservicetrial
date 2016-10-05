@@ -18,6 +18,6 @@ public class Greeter {
 
 	@RequestMapping(value="/")
 	String home(){
-		return message;
+		return "Whats up .. " + message;
 	}
 }
