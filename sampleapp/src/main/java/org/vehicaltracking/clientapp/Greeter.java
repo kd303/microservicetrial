@@ -20,9 +20,4 @@ public class Greeter {
 	String home(){
 		return message;
 	}
-	
-	
-	public Greeter() {
-		System.out.println("whats the fucking message :: "+message);
-	}
 }
