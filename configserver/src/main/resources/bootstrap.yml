@@ -1,0 +1,21 @@
+spring:
+  devtools:
+    livereload:
+      enabled: false
+      port: 8889
+    remote:
+      proxy:
+        host: indpunsbd4intpxy01.ad.infosys.com
+        port: 80
+  application:
+    name: config-service
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/rpicloud/guide-cloud-config
+server:
+  port: 8888
+  
+  ## https://github.com/rpicloud/guide-cloud-config
+  ## https://github.com/kd303/microservicetrial/tree/master/config-repo/configclient

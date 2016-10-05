@@ -1,0 +1,9 @@
+spring:
+  devtools:
+    livereload:
+      enabled: false
+  application:
+    name: configclient
+  cloud:
+    config:
+      uri: http://localhost:8888
