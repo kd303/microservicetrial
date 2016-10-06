@@ -13,10 +13,18 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/kd303/config-repo
+          uri: https://github.com/kd303/microservicetrial/
+          search-paths:
+            - config-repo*
+#            - config-repo/configclient*
 server:
   port: 8888
   
+  ## above configuration works on search paths, if the repo needs to be same
+  ## apply searchpath with the parent folder, 
+  ## it will search with config-repo/{applicationName} 
+  
+  ## this one just works - https://github.com/kd303/config-repo
   ## last line repo does not work, as it is just a filder within a master branch
   # once I created a new repo and put the file there it just works!
   ## https://github.com/rpicloud/guide-cloud-config
