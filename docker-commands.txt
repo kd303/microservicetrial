@@ -1,0 +1,54 @@
+# mvn package docker:build -DpushImage
+
+sudo vi /var/lib/boot2docker/profile
+
+
+# Press 'i' to start editing mode
+export HTTP_PROXY=http://<proxyUser>:<proxyPassword>@<proxyHost>:<proxyPort>
+export HTTPS_PROXY=http://<proxyUser>:<proxyPassword>@<proxyHost>:<proxyPort>
+# Press 'escape' and then type ':x' to save and exit the file.
+
+docker-machine env default
+
+docker-machine env
+
+SET DOCKER_TLS_VERIFY=1
+SET DOCKER_HOST=tcp://192.168.99.100:2376
+SET DOCKER_CERT_PATH=C:\Users\kaushal_desai01\.docker\machine\machines\default
+SET DOCKER_MACHINE_NAME=default
+REM Run this command to configure your shell:
+REM     @FOR /f "tokens=*" %i IN ('docker-machine env') DO @%i
+
+@FOR /f "tokens=*" %i IN ('docker-machine env') DO @%i
+
+docker-machine ip default
+# removing all containers
+# FOR /f "tokens=*" %i IN ('docker ps -a -q') DO docker rm %i
+#Stop all
+#FOR /f "tokens=*" %i IN ('docker ps -a -q') DO docker rm %i
+## 192.168.99.100
+
+
+mvn package docker:build
+
+docker run -itd --link insane_wing -p <proxyPort>01:<proxyPort>01 -t org.kaushal.sampleapp/vehicaltracking
+docker run -p 8888:8888 -t org.kaushal.configserver/configserver
+
+
+docker run --name configserver --net host -p 192.168.99.100:8888:192.168.99.100:8888 -t org.kaushal.sampleapp/vehicaltracking
+docker run --name sampleapp --net host -p 192.168.99.100:8001:192.168.99.100:8001 -t org.kaushal.sampleapp/vehicaltracking
+
+
+
+docker run --link configserver \
+		-e http_proxy='http://<proxyUser>:<proxyPassword>@<proxyHost>:<proxyPort>' \
+		-e https_proxy='http://<proxyUser>:<proxyPassword>@<proxyHost>:<proxyPort>' \
+		-p 192.168.99.100:8001:8001 \
+		-t org.kaushal.sampleapp/vehicaltracking \
+		--name sampleapp 
+
+docker run -e http_proxy='http://<proxyUser>:<proxyPassword>@<proxyHost>:<proxyPort>' \
+           -e https_proxy='http://<proxyUser>:<proxyPassword>@<proxyHost>:<proxyPort>' \
+		   -p 192.168.99.100:8888:8888 \
+		   -t org.kaushal.configserver/configserver \
+		   --name configserver
