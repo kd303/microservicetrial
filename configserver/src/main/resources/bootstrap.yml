@@ -5,8 +5,8 @@ spring:
       port: 8889 ## doesnt work !
     remote:
       proxy:
-        host: indpunsbd4intpxy01.ad.infosys.com
-        port: 80
+        host: <proxyUserName>:<proxyPassword>@indpunsbd4intpxy01.ad.infosys.com
+        port: <proxyPort>
   application:
     name: config-service
   cloud:

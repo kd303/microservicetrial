@@ -9,6 +9,9 @@ import org.springframework.cloud.config.server.EnableConfigServer;
 public class ConfigServer {
 
 	public static void main(String []s) {
+		System.out.println("************************************command line*****************");
+		System.out.printf("proxy yser name : %s", System.getProperty("https.proxyUser"));
+		System.out.println("************************************command line*****************");
 		SpringApplication.run(ConfigServer.class, s);
 	}
 }
